@@ -4,7 +4,7 @@ class Gff3Entry
   TYPE_COL_INDEX = 2
   START_COL_INDEX = 3
   END_COL_INDEX = 4
-  ATTRIBULE_COL_INDEX = 8
+  ATTRIBUTE_COL_INDEX = 8
 
   # @return [Array<String>]
   attr_reader :mandatory_fields
@@ -40,8 +40,8 @@ class Gff3Entry
     # @return     [Gff3Entry]
     def parse(line)
       fields = line.split("\t")
-      attributes = parse_attributes(fields[ATTRIBULE_COL_INDEX])
-      Gff3Entry.new(fields[0...ATTRIBULE_COL_INDEX], attributes)
+      attributes = parse_attributes(fields[ATTRIBUTE_COL_INDEX])
+      Gff3Entry.new(fields[0...ATTRIBUTE_COL_INDEX], attributes)
     end
 
     private
