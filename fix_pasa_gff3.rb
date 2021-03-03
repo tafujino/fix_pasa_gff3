@@ -17,7 +17,7 @@ def write_gene(gff3_entries)
   gff3_entries.each do |gff3|
     exon_mandatory_fields = gff3.mandatory_fields.clone
     exon_mandatory_fields[Gff3Entry::TYPE_COL_INDEX] = 'exon'
-    exon_attributes = gff3.attributes
+    exon_attributes = gff3.attributes.clone
     exon_attributes.delete(:ID)
     exon_attributes[:Parent] = gene
     puts Gff3Entry.new(exon_mandatory_fields, exon_attributes)
