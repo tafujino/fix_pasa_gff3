@@ -12,11 +12,11 @@ def write_gene(gff3_entries)
   gene_mandatory_fields[Gff3Entry::END_COL_INDEX] = gff3_entries.last.end_pos
   gene = gff3_entries.first.attributes[:ID]
   puts Gff3Entry.new(gene_mandatory_fields, { ID: gene })
-  gff3_entries.each do |gff3|
+  gff3_entries.each_with_index do |gff3, i|
     exon_mandatory_fields = gff3.mandatory_fields.clone
     exon_mandatory_fields[Gff3Entry::TYPE_COL_INDEX] = 'exon'
     exon_attributes = gff3.attributes.clone
-    exon_attributes.delete(:ID)
+    exon_attributes[:ID] = "#{gene}_#{i}"
     exon_attributes[:Parent] = gene
     puts Gff3Entry.new(exon_mandatory_fields, exon_attributes)
   end
