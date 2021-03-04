@@ -2,8 +2,6 @@
 
 # frozen_string_literal: true
 
-require 'csv'
-
 require_relative 'gff3_entry'
 
 # @param gff3_entries [Array<Gff3Entry>] should be non-empty
